@@ -7,20 +7,18 @@
 <% end %>
  
 <%= content_for :title do %>
-  <div class="contact-header">
+  <div class="contact-header" data-user="<%= @user.id %>">
     <div class="name">
       <%= @user.name %>
     </div>
     <div class="status">
-      Online
+      <%= @user.is_online? ? "Online" : "Offline" %>
     </div>
   </div>
 <% end %>
  
 <div class="message-container">
-
-  <%= render @messages %>
-
+  <%= render @messages %>  
   <footer class="send-message has-background-black">
     <div class="container">
       <%= form_with url: chat_messages_path(@user) do |f| %>
